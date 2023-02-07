@@ -1,0 +1,25 @@
+#bottom-table{
+	width:100%;
+	bottom:0;
+	position: sticky;
+	background-color: white;
+	border: 1px solid black;
+}
+#choice-item, #total-item{
+	margin:auto;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+#pay-btn{
+	margin: 20px auto;
+	display: flex;
+	justify-content: center;
+}
+#pay-btn > a{
+	padding: 20px 100px;
+	background-color: #000000;
+	color:white; 
+	font-weight: 600;
+}

@@ -1,0 +1,54 @@
+#header{
+	width: 70%;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#user-btn{
+}
+#hello-msg{
+	text-align: center;
+}
+
+#select-list{
+	margin:20px 0;
+	padding-top: 20px;
+	text-align: center;
+}
+#select-list > a{
+	padding: 20px 100px;
+	border: 1px solid black;
+	border-bottom: none;
+	border-radius: 5px 5px 0 0;
+	font-size: 20px;
+	font-weight: 700;
+	color: rgb(237,28,36);
+}
+#select-list > a:hover {
+	font-size: 20px;
+	font-weight: 700;
+	color: rgb(243,243,244);
+	background-color: rgb(237,28,36);
+}
+#btn{
+	padding: 30px 0;
+	text-align: right;
+}
+#btn > a{
+	background-color: rgb(237,28,36);
+	color: rgb(243,243,244);
+	font-size: 15px;
+	font-weight: 700;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+#btn > a:hover{
+	background-color: rgb(243,243,244);
+	font-size: 15px;
+	font-weight: 700;
+	color: rgb(237,28,36);
+}
+

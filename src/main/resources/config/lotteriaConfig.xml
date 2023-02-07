@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.lotteria.kiosk.dto.BurgerDTO" alias="BurgerDTO"/>
+		<typeAlias type="com.lotteria.kiosk.dto.DrinkDTO" alias="DrinkDTO"/>
+		<typeAlias type="com.lotteria.kiosk.dto.SideDTO" alias="SideDTO"/>
+		<typeAlias type="com.lotteria.kiosk.dto.ChoiceDTO" alias="ChoiceDTO"/>
+		<typeAlias type="com.lotteria.kiosk.dto.CouponDTO" alias="CouponDTO"/>
+		<typeAlias type="com.lotteria.kiosk.dto.OrdersDTO" alias="OrdersDTO"/>
+		<typeAlias type="com.lotteria.kiosk.dto.FoodDTO" alias="FoodDTO" />
+		<typeAlias type="com.lotteria.kiosk.dto.RecipeDTO" alias="RecipeDTO" />
+		<typeAlias type="com.lotteria.kiosk.dto.AdminDTO" alias="AdminDTO" />
+	</typeAliases>
+</configuration>

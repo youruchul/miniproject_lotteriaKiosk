@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kiosk">
+	<select id="findAllBurgerList" resultType="BurgerDTO">
+		<![CDATA[
+		select id, name, content, price, singleImg, setImg
+		from burger
+		]]>
+	</select>
+	<select id="findOneById" resultType="BurgerDTO" parameterType="Integer">
+		<![CDATA[
+		select id, name, content, price, singleImg, setImg
+		from burger
+		where id = #{id}
+		]]>
+	</select>
+	<select id="findAllDrinkList" resultType="DrinkDTO">
+		<![CDATA[
+		select id, name, content, price, img
+		from drink
+		]]>
+	</select>
+	<select id="findAllSideList" resultType="SideDTO">
+		<![CDATA[
+		select id, name, content, price, img
+		from side
+		]]>
+	</select>
+	<insert id="choiceFood" parameterType="ChoiceDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+		insert into choice(categoryId, itemId)
+		values(#{categoryId}, #{itemId})
+		]]>
+	</insert>
+	<select id="findAllChoiceList" resultType="ChoiceDTO">
+		<![CDATA[
+		select categoryId, itemId, count(*) as count
+		from choice
+		group by categoryId, itemId;
+		]]>
+	</select>
+	<select id="findOneByCode" resultType="CouponDTO" parameterType="String">
+		<![CDATA[
+		select id, name, percent, code
+		from coupon
+		where code = #{code}
+		]]>
+	</select>
+	<delete id="deleteChoice">
+		<![CDATA[
+		delete from choice
+		]]>
+	</delete>
+	<select id="findLastOrderNumber" resultType="OrdersDTO">
+		<![CDATA[
+		select id
+		from orders
+		order by id desc
+		limit 0,1
+		]]>
+	</select>
+	<insert id="insertOrder" parameterType="OrdersDTO">
+		<![CDATA[
+		insert into orders (id, totalCount, totalPrice)
+		values (#{id}, #{totalCount}, #{totalPrice})
+		]]>
+	</insert>
+	<select id="findAllFoodList" resultType="FoodDTO">
+		<![CDATA[
+		select id, name, count
+		from food
+		]]>
+	</select>
+	<update id="updateFoodCount" parameterType="FoodDTO">
+		<![CDATA[
+			update food set
+			count = count - 1
+			where id = #{id};
+		]]>
+	</update>
+	<select id="findListByitemId" resultType="RecipeDTO" parameterType="Integer">
+		<![CDATA[
+		select id,itemId,foodId,foodCount 
+		from recipe 
+		where itemId = #{itemId}
+		]]>
+	</select>
+</mapper>

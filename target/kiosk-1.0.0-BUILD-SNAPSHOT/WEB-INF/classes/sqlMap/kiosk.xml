@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kiosk">
+	<select id="findAllBurgerList" resultType="BurgerDTO">
+		<![CDATA[
+		select id, name, content, price, singleImg, setImg
+		from burger
+		]]>
+	</select>
+	<select id="findOneById" resultType="BurgerDTO" parameterType="Integer">
+		<![CDATA[
+		select id, name, content, price, singleImg, setImg
+		from burger
+		where id = #{id}
+		]]>
+	</select>
+	<select id="findAllDrinkList" resultType="DrinkDTO">
+		<![CDATA[
+		select id, name, content, price, img
+		from drink
+		]]>
+	</select>
+	<select id="findAllSideList" resultType="SideDTO">
+		<![CDATA[
+		select id, name, content, price, img
+		from side
+		]]>
+	</select>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+
+<!-- 회원 관리 -->
+	<select id="login" parameterType="AdminDTO" resultType="AdminDTO">
+		<![CDATA[
+			select id, adminId, adminPW, name from admins
+			where adminId = #{adminId} and adminPW = #{adminPW}
+			limit 0, 1
+		]]>
+	</select>
+	
+	<insert id="signup" parameterType="AdminDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into admins(adminId, adminPW, name)
+			values(#{adminId}, #{adminPW}, #{name})
+		]]>
+	</insert>
+	
+<!-- 버거 -->
+	<insert id="addBurger" parameterType="BurgerDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into burger(name, content, price, singleImg, setImg)
+			values(#{name}, #{content}, #{price}, #{singleImg}, #{setImg})
+		]]>
+	</insert>
+	<delete id="deleteBurger" parameterType="Integer">
+		<![CDATA[
+			delete from burger
+			where id = #{id}
+		]]>
+	</delete>
+	<update id="updateBurger" parameterType="BurgerDTO">
+	<![CDATA[
+		update burger set
+		name = #{name}, content = #{content}, price = #{price}, singleImg = #{singleImg}, setImg = #{setImg}
+		where id = #{id}
+	]]>
+	</update>
+	<select id="findOneBurger" resultType="BurgerDTO" parameterType="Integer">
+		<![CDATA[
+			select id, name, content, price, singleImg, setImg
+			from burger
+			where id = #{id};
+		]]>
+	</select>
+	
+<!-- 사이드 메뉴 -->
+	<insert id="addSide" parameterType="SideDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into side(name, content, price, img)
+			values(#{name}, #{content}, #{price}, #{img})
+		]]>
+	</insert>
+	<update id="updateSide" parameterType="SideDTO">
+		<![CDATA[
+			update side set
+			name = #{name}, content = #{content}, price = #{price}, img = #{img}
+			where id = #{id}
+		]]>
+	</update>
+	<delete id="deleteSide" parameterType="Integer">
+		<![CDATA[
+			delete from side
+			where id = #{id}
+		]]>
+	</delete>
+	<select id="findOneSide" parameterType="Integer" resultType="SideDTO" >
+		<![CDATA[
+			select id, name, content, price, img
+			from side
+			where id = #{id}
+		]]>
+	</select>
+	
+<!-- 음료 -->
+	<insert id="addDrink" parameterType="DrinkDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into drink(name, content, price, img)
+			values(#{name}, #{content}, #{price}, #{img})
+		]]>
+	</insert>
+	<update id="updateDrink" parameterType="DrinkDTO">
+		<![CDATA[
+			update drink set
+			name = #{name}, content = #{content}, price = #{price}, img = #{img}
+			where id = #{id}
+		]]>
+	</update>
+	<delete id="deleteDrink" parameterType="Integer">
+		<![CDATA[
+			delete from drink
+			where id = #{id}
+		]]>
+	</delete>
+	<select id="findOneDrink" parameterType="Integer" resultType="DrinkDTO" >
+		<![CDATA[
+			select id, name, content, price, img
+			from drink
+			where id = #{id}
+		]]>
+	</select>
+	
+	<!-- 재료 -->
+	<insert id="addFood" parameterType="FoodDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into food(name, count)
+			values(#{name}, #{count})
+		]]>
+	</insert>
+	
+	<update id="updateFood" parameterType="FoodDTO">
+		<![CDATA[
+			update food set
+			name = #{name}, count = #{count}
+			where id = #{id}
+		]]>
+	</update>
+	
+	<insert id="addRecipe" parameterType="RecipeDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into recipe(itemId, foodId, foodName, foodCount)
+			values(#{itemId}, #{foodId}, #{foodName}, #{foodCount})
+		]]>
+	</insert>
+	
+	<select id="findOneFood" parameterType="Integer" resultType="FoodDTO" >
+		<![CDATA[
+			select id, name, count
+			from food
+			where id = #{id}
+		]]>
+	</select>
+</mapper>
